@@ -6,6 +6,7 @@ class ThemeGenerator {
     constructor() {
         this.baseColor = '#3498db';
         this.themeColors = [];
+        this.harmonyType = 'complementary';
     }
     
     /**
@@ -17,7 +18,15 @@ class ThemeGenerator {
     }
     
     /**
-     * Generate a theme based on the base color
+     * Set the color harmony type
+     * @param {string} type - Harmony type (complementary, analogous, triadic, etc.)
+     */
+    setHarmonyType(type) {
+        this.harmonyType = type;
+    }
+    
+    /**
+     * Generate a theme based on the base color and selected harmony type
      * @returns {Array} - Array of theme color objects
      */
     generateTheme() {
@@ -32,22 +41,133 @@ class ThemeGenerator {
                 name: 'primary',
                 hex: this.baseColor,
                 role: 'Primary color for buttons, links, and highlights'
-            },
-            
-            // Secondary color (complementary)
-            {
-                name: 'secondary',
-                hex: this.hsvToHex((hsv.h + 0.5) % 1.0, hsv.s, hsv.v),
-                role: 'Secondary color for accents and contrasting elements'
-            },
-            
-            // Accent color (triadic harmony)
-            {
-                name: 'accent',
-                hex: this.hsvToHex((hsv.h + 0.33) % 1.0, hsv.s, hsv.v),
-                role: 'Accent color for special elements and calls to action'
-            },
-            
+            }
+        ];
+        
+        // Generate additional colors based on selected harmony type
+        switch(this.harmonyType) {
+            case 'complementary':
+                // Secondary color (complementary - opposite on color wheel)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex((hsv.h + 0.5) % 1.0, hsv.s, hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (30 degrees from complementary)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex((hsv.h + 0.58) % 1.0, hsv.s, hsv.v),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                break;
+                
+            case 'analogous':
+                // Secondary color (30 degrees from primary)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex((hsv.h + 0.08) % 1.0, hsv.s * 0.9, hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (60 degrees from primary)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex((hsv.h + 0.16) % 1.0, hsv.s * 0.8, hsv.v),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                break;
+                
+            case 'triadic':
+                // Secondary color (120 degrees from primary)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex((hsv.h + 0.33) % 1.0, hsv.s, hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (240 degrees from primary)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex((hsv.h + 0.66) % 1.0, hsv.s, hsv.v),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                break;
+                
+            case 'split-complementary':
+                // Secondary color (150 degrees from primary)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex((hsv.h + 0.42) % 1.0, hsv.s, hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (210 degrees from primary)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex((hsv.h + 0.58) % 1.0, hsv.s, hsv.v),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                break;
+                
+            case 'tetradic':
+                // Secondary color (90 degrees from primary)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex((hsv.h + 0.25) % 1.0, hsv.s, hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (180 degrees from primary)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex((hsv.h + 0.5) % 1.0, hsv.s, hsv.v),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                
+                // Fourth color (270 degrees from primary)
+                themeColors.push({
+                    name: 'accent2',
+                    hex: this.hsvToHex((hsv.h + 0.75) % 1.0, hsv.s, hsv.v),
+                    role: 'Additional accent color for complex designs'
+                });
+                break;
+                
+            case 'monochromatic':
+                // Secondary color (same hue, lower saturation)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex(hsv.h, Math.max(0.1, hsv.s * 0.7), hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (same hue, different brightness)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex(hsv.h, hsv.s, Math.max(0.2, Math.min(0.9, hsv.v * 0.7))),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                break;
+                
+            default: // Default to complementary if unknown type
+                // Secondary color (complementary)
+                themeColors.push({
+                    name: 'secondary',
+                    hex: this.hsvToHex((hsv.h + 0.5) % 1.0, hsv.s, hsv.v),
+                    role: 'Secondary color for accents and contrasting elements'
+                });
+                
+                // Accent color (triadic harmony)
+                themeColors.push({
+                    name: 'accent',
+                    hex: this.hsvToHex((hsv.h + 0.33) % 1.0, hsv.s, hsv.v),
+                    role: 'Accent color for special elements and calls to action'
+                });
+                break;
+        }
+        
+        // Add the remaining theme colors
+        themeColors.push(
             // Background color (very light version of base)
             {
                 name: 'background',
@@ -96,7 +216,7 @@ class ThemeGenerator {
                 hex: '#666666',
                 role: 'Secondary text color for less emphasis'
             }
-        ];
+        );
         
         // Store the theme colors
         this.themeColors = themeColors;

@@ -22,6 +22,9 @@
     --secondary-color: #2ecc71;
     --accent-color: #f39c12;
     --hover-color: #333333;
+    --form-text-color: #e0e0e0;
+    --form-bg-color: #2c2c2c;
+    --form-border-color: #444444;
 }
 
 body {
@@ -239,4 +242,67 @@ input:checked + .slider:before {
 canvas {
     width: 100%;
     height: 100%;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: var(--form-bg-color);
+    border-color: var(--form-border-color);
+    color: var(--form-text-color);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: var(--form-bg-color);
+    border-color: var(--primary-color);
+    color: var(--form-text-color);
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+[data-theme="dark"] .form-text {
+    color: var(--muted-text-color);
+}
+
+[data-theme="dark"] .btn-outline-secondary {
+    color: var(--form-text-color);
+    border-color: var(--form-border-color);
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .card-header {
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .result-color-info {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] input[type="color"] {
+    background-color: var(--form-bg-color);
+    border-color: var(--form-border-color);
+}
+
+/* Fix section titles in dark mode */
+[data-theme="dark"] .card-header h2,
+[data-theme="dark"] .card-header h5 {
+    color: var(--text-color);
+}
+
+/* Fix Base Color and Hex code text */
+[data-theme="dark"] .form-label,
+[data-theme="dark"] #selectedColorText,
+[data-theme="dark"] #baseColorHex,
+[data-theme="dark"] h6,
+[data-theme="dark"] #colorResults p {
+    color: var(--text-color);
+}
+
+/* Fix border-bottom elements */
+[data-theme="dark"] .border-bottom {
+    border-color: var(--border-color) !important;
 }
