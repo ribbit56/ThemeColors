@@ -22,7 +22,7 @@ A web-based application for analyzing image colors, generating color themes, and
 5. Choose a color harmony type (Complementary, Analogous, Triadic, etc.)
 6. Customize individual theme colors as needed
 7. View the dashboard preview to see how your colors work together
-8. Export your theme in your preferred format
+8. Export options coming soon
 
 ## Technical Details
 
@@ -57,7 +57,6 @@ The app includes a comprehensive color harmony system based on established color
 - **Complementary**: Colors opposite each other on the color wheel, providing high contrast and visual impact
 - **Analogous**: Colors adjacent to each other on the color wheel, creating a harmonious and cohesive look
 - **Triadic**: Three colors evenly spaced around the color wheel (120° apart), offering balanced contrast
-- **Split-Complementary**: A base color and two colors adjacent to its complement, providing balance with less tension
 - **Tetradic**: Four colors arranged in two complementary pairs, offering rich color possibilities
 - **Monochromatic**: Variations in lightness and saturation of a single color, creating a cohesive look
 

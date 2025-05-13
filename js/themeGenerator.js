@@ -94,21 +94,7 @@ class ThemeGenerator {
                 });
                 break;
                 
-            case 'split-complementary':
-                // Secondary color (150 degrees from primary)
-                themeColors.push({
-                    name: 'secondary',
-                    hex: this.hsvToHex((hsv.h + 0.42) % 1.0, hsv.s, hsv.v),
-                    role: 'Secondary color for accents and contrasting elements'
-                });
-                
-                // Accent color (210 degrees from primary)
-                themeColors.push({
-                    name: 'accent',
-                    hex: this.hsvToHex((hsv.h + 0.58) % 1.0, hsv.s, hsv.v),
-                    role: 'Accent color for special elements and calls to action'
-                });
-                break;
+            // Split-complementary case removed as it was too similar to Complementary
                 
             case 'tetradic':
                 // Secondary color (90 degrees from primary)

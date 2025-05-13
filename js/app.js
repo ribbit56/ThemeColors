@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'complementary': 'Complementary colors are opposite each other on the color wheel, providing high contrast and visual impact.',
         'analogous': 'Analogous colors are adjacent to each other on the color wheel, creating a harmonious and cohesive look.',
         'triadic': 'Triadic colors are evenly spaced around the color wheel (120° apart), offering visual contrast while maintaining harmony.',
-        'split-complementary': 'Split-complementary uses a base color and two colors adjacent to its complement, providing balance with less tension than complementary.',
         'tetradic': 'Tetradic (rectangle) harmony uses four colors arranged in two complementary pairs, offering rich color possibilities.',
         'monochromatic': 'Monochromatic schemes use variations in lightness and saturation of a single color, creating a cohesive and elegant look.'
     };

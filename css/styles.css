@@ -230,13 +230,21 @@ input:checked + .slider:before {
     background-color: var(--card-bg);
 }
 
-/* Dashboard Preview Styles */
-.dashboard-preview-container {
-    width: 100%;
+/* Coming Soon Container */
+.coming-soon-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Dashboard Preview */
+.dashboard-preview {
     height: 600px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
     overflow: hidden;
+    position: relative;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 20px;
 }
 
 canvas {
