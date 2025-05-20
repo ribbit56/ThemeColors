@@ -306,8 +306,19 @@ canvas {
 [data-theme="dark"] #selectedColorText,
 [data-theme="dark"] #baseColorHex,
 [data-theme="dark"] h6,
-[data-theme="dark"] #colorResults p {
+[data-theme="dark"] #colorResults p,
+[data-theme="dark"] .color-info div {
     color: var(--text-color);
+}
+
+/* Fix color result rows in dark mode */
+[data-theme="dark"] .color-result-row {
+    border-color: var(--border-color) !important;
+}
+
+/* Ensure color percentages are visible but muted */
+[data-theme="dark"] .color-info .text-muted {
+    color: var(--muted-text-color) !important;
 }
 
 /* Fix border-bottom elements */
